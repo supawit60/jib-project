@@ -1,9 +1,13 @@
 from django.test import TestCase
+
 from ..models import Worker
+
 import json
 
+from rest_framework.test import APITestCase
 
-class TestWorkerListView(TestCase):
+
+class TestWorkerListView(APITestCase):
     def test_view_should_be_accessible(self):
         response = self.client.get('/workers/')
         # print(dir(response))
@@ -15,36 +19,50 @@ class TestWorkerListView(TestCase):
             first_name='Supawit',
             last_name='Klinhom',
             is_available=True,
-            primary_phone='08888888',
-            secondary_phone='09999999',
+            primary_phone='0888888888',
+            secondary_phone='0999999999',
             address='Bangkok',
         )
         Worker.objects.create(
             first_name='Test',
             last_name='Klinhom',
             is_available=False,
-            primary_phone='08888888',
-            secondary_phone='09999999',
-            address='Thailand',
+            primary_phone='0888888888',
+            secondary_phone='0999999999',
+            address='Bangkok',
         )
 
         # When
         response = self.client.get('/workers/')
 
+        print(response.data)
+
         # Then
         # self.assertContains(response, '<li>Supawit</li>')
         # self.assertContains(response, '<li>Test</li>')
 
+        # self.maxDiff = None
+
         excepted = [
             {
-                'name': 'Supawit'
+                "first_name": "Supawit",
+                "last_name": "Klinhom",
+                "is_available": True,
+                "primary_phone": "0888888888",
+                "secondary_phone": "0999999999",
+                "address": "Bangkok"
             },
             {
-                'name': 'Test'
+                "first_name": "Test",
+                "last_name": "Klinhom",
+                "is_available": False,
+                "primary_phone": "0888888888",
+                "secondary_phone": "0999999999",
+                "address": "Bangkok"
             },
         ]
 
         self.assertEqual(
-            response.content.decode('utf-8'),
-            json.dumps(excepted)
+            response.data,
+            excepted
         )
