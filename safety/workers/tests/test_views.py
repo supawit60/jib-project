@@ -1,5 +1,6 @@
 from django.test import TestCase
 from ..models import Worker
+import json
 
 
 class TestWorkerListView(TestCase):
@@ -31,5 +32,19 @@ class TestWorkerListView(TestCase):
         response = self.client.get('/workers/')
 
         # Then
-        self.assertContains(response, '<li>Supawit</li>')
-        self.assertContains(response, '<li>Test</li>')
+        # self.assertContains(response, '<li>Supawit</li>')
+        # self.assertContains(response, '<li>Test</li>')
+
+        excepted = [
+            {
+                'name': 'Supawit'
+            },
+            {
+                'name': 'Test'
+            },
+        ]
+
+        self.assertEqual(
+            response.content.decode('utf-8'),
+            json.dumps(excepted)
+        )
