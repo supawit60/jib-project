@@ -27,7 +27,7 @@ class WorkerListView(View):
         worker_list = []
         for worker in workers:
             d = {
-                'name': worker.first_name
+                'name': worker.first_name,
             }
             worker_list.append(d)
 
