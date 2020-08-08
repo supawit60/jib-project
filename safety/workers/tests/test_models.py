@@ -41,4 +41,8 @@ class TestWorker(TestCase):
         self.assertEqual(worker.secondary_phone, secondary_phone)
         self.assertEqual(worker.address, address)
 
+        # Pytest
+        assert worker.first_name == first_name
+        assert worker.is_available is True
+
         os.remove('media/ss.png')
