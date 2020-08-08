@@ -1,8 +1,8 @@
 from django.db import models
-
-# Create your models here.
+from workers.models import Worker
 
 
 class Certificate(models.Model):
     name = models.CharField(max_length=50)
     issue_by = models.CharField(max_length=100)
+    worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
