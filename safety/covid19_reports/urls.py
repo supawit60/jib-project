@@ -12,16 +12,9 @@ Including another URLconf
 """
 from django.urls import include, path
 
-from rest_framework.routers import DefaultRouter
-
-from .views import WorkerListView
-# WorkerModelViewSetView
-
-
-# router = DefaultRouter()
-# router.register(r'', WorkerModelViewSetView)
+from .views import Covid19ReportView
 
 urlpatterns = [
-    path('', WorkerListView.as_view()),
-    # path('', include(router.urls)),
+    path('', Covid19ReportView.as_view()),
+
 ]

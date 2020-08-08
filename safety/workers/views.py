@@ -24,6 +24,6 @@ class WorkerListView(APIView):
         return Response(serializer.data)
 
 
-class WorkerModelViewSetView(viewsets.ModelViewSet):
-    queryset = Worker.objects.all()
-    serializer_class = WorkerSerializer
+# class WorkerModelViewSetView(viewsets.ModelViewSet):
+#     queryset = Worker.objects.all()
+#     serializer_class = WorkerSerializer
