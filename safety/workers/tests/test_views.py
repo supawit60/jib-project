@@ -1,8 +1,8 @@
-from django.test import TestCase
+# from django.test import TestCase
 
 from ..models import Worker
 
-import json
+# import json
 
 from rest_framework.test import APITestCase
 
