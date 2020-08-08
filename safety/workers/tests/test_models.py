@@ -35,10 +35,10 @@ class TestWorker(TestCase):
         # Then
         self.assertEqual(worker.first_name, first_name)
         self.assertEqual(worker.last_name, last_name)
-        self.assertEqual(worker.image_profile, image_mock.name)
+        self.assertEqual(worker.image_profile, image_mock)
         self.assertEqual(worker.is_available, is_available)
         self.assertEqual(worker.primary_phone, primary_phone)
         self.assertEqual(worker.secondary_phone, secondary_phone)
         self.assertEqual(worker.address, address)
 
-        os.remove('ss.png')
+        os.remove('media/ss.png')
