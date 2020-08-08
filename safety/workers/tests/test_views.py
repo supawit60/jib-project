@@ -35,7 +35,7 @@ class TestWorkerListView(APITestCase):
         # When
         response = self.client.get('/workers/')
 
-        print(response.data)
+        # print(response.data)
 
         # Then
         # self.assertContains(response, '<li>Supawit</li>')
